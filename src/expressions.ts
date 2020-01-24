@@ -55,7 +55,8 @@ export namespace Expressions {
             leExpr(value, token.next) ||
             gtExpr(value, token.next) ||
             geExpr(value, token.next) ||
-            hasExpr(value, token.next);
+            hasExpr(value, token.next)||
+            inExpr(value, token.next);
 
             if (commonMoreExpr) {
                 token.value = {
@@ -144,6 +145,7 @@ export namespace Expressions {
     export function gtExpr(value: Utils.SourceArray, index: number): Lexer.Token { return leftRightExpr(value, index, "gt", Lexer.TokenType.GreaterThanExpression); }
     export function geExpr(value: Utils.SourceArray, index: number): Lexer.Token { return leftRightExpr(value, index, "ge", Lexer.TokenType.GreaterOrEqualsExpression); }
     export function hasExpr(value: Utils.SourceArray, index: number): Lexer.Token { return leftRightExpr(value, index, "has", Lexer.TokenType.HasExpression); }
+    export function inExpr(value: Utils.SourceArray, index: number): Lexer.Token { return leftRightExpr(value, index, "in", Lexer.TokenType.InExpression); }
 
     export function addExpr(value: Utils.SourceArray, index: number): Lexer.Token { return leftRightExpr(value, index, "add", Lexer.TokenType.AddExpression); }
     export function subExpr(value: Utils.SourceArray, index: number): Lexer.Token { return leftRightExpr(value, index, "sub", Lexer.TokenType.SubExpression); }

@@ -5,16 +5,15 @@
   "main": "lib/parser.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jaystack/odata-v4-parser.git"
+    "url": "git://github.com/thelenilson/odata-v4-parser.git"
   },
   "bugs": {
-    "url": "https://github.com/jaystack/odata-v4-parser/issues"
+    "url": "https://github.com/thelenilson/odata-v4-parser/issues"
   },
-  "homepage": "https://github.com/jaystack/odata-v4-parser#readme",
+  "homepage": "https://github.com/thelenilson/odata-v4-parser#readme",
   "author": "JayStack",
   "license": "MIT",
   "scripts": {
-    "prebuild": "npm run lint",
     "build": "tsc",
     "build:w": "tsc -w",
     "lint": "tslint src/**/*.ts --fix",
@@ -37,7 +36,7 @@
     "typedoc": "^0.11.1",
     "typedoc-default-themes": "^0.5.0",
     "typedoc-plugin-external-module-name": "^1.1.1",
-    "typescript": "^2.9.1"
+    "typescript": "^3.7.4"
   },
   "typings": "lib/parser.d.ts"
 }
