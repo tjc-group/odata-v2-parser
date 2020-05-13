@@ -25,6 +25,31 @@ describe("Parser", () => {
     expect(ast.value.options[0].value.items[1].raw).to.equal("bar");
   });
 
+  it("should parse V2 inline count", () => {
+    var parser = new Parser();
+    var ast = parser.query("$inlinecount=allpages");
+    expect(ast.value.options[0].type).to.equal("InlineCount");
+    expect(ast.value.options[0].value.raw).to.equal("allpages");
+  });
+
+  it("should parse V4 inline count", () => {
+    var parser = new Parser();
+    var ast = parser.query("$count=true");
+    expect(ast.value.options[0].type).to.equal("InlineCount");
+    expect(ast.value.options[0].value.raw).to.equal("true");
+  });
+
+  it("should fail to parse V4 inline count with incorrect value", () => {
+    var parser = new Parser();
+    var error = false;
+    try {
+      var ast = parser.query("$count=allpages");
+      error = true;
+    } catch(e) {
+    }
+    expect(error).to.be.false;
+  });
+
   it("should parse custom query options", () => {
     var parser = new Parser();
     var ast = parser.query("foo=123&bar=foobar");

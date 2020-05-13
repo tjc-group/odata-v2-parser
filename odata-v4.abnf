@@ -284,6 +284,7 @@ format = '$format' EQ
                                ; <An IANA-defined [IANA-MMT] content type>
 
 inlinecount = '$count' EQ booleanValue
+              / '$inlinecount' EQ "allpages"
 
 search     = '$search' EQ BWS searchExpr
 searchExpr = ( OPEN BWS searchExpr BWS CLOSE

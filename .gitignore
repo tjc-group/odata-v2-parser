@@ -1,6 +1,9 @@
 node_modules
+lib/*
+lib/*.js
 src/*.js
 coverage
 docs
 report
 *.log*
+lib

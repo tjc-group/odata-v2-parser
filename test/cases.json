@@ -1483,6 +1483,16 @@
   {
     "-Name": "5.1.6 Inlinecount",
     "-Rule": "queryOptions",
+    "Input": "$inlinecount=true"
+  },  
+{
+  "-Name": "5.1.6 Inlinecount",
+  "-Rule": "queryOptions",
+  "Input": "$inlinecount=allpages"
+},
+{
+    "-Name": "5.1.6 Inlinecount",
+    "-Rule": "queryOptions",
     "Input": "$count=false"
   },
   {
