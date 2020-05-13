@@ -5,12 +5,12 @@
   "main": "lib/parser.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/thelenilson/odata-v4-parser.git"
+    "url": "https://github.com/tjc-group/odata-v2-parser.git"
   },
   "bugs": {
-    "url": "https://github.com/thelenilson/odata-v4-parser/issues"
+    "url": "https://github.com/tjc-group/odata-v2-parser/issues"
   },
-  "homepage": "https://github.com/thelenilson/odata-v4-parser#readme",
+  "homepage": "https://github.com/tjc-group/odata-v2-parser#readme",
   "author": "JayStack",
   "license": "MIT",
   "scripts": {
