@@ -18,6 +18,12 @@ describe("Parser", () => {
     expect(ast.value.options[0].type).to.equal("Filter");
   });
 
+  it("should detect batch query", () => {
+    var parser = new Parser();
+    var ast = parser.query("$batch");
+    expect(ast.value.options[0].type).to.equal("Batch");
+  });
+
   it("should parse multiple orderby params", () => {
     var parser = new Parser();
     var ast = parser.query("$orderby=foo,bar");

@@ -7,3 +7,10 @@ docs
 report
 *.log*
 lib
+lib/query.js.map
+lib/query.d.ts
+lib/query.js.map
+lib/query.js.map
+lib/query.js
+lib/query.js.map
+lib/query.d.ts

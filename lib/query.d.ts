@@ -5,6 +5,7 @@ export declare namespace Query {
     function queryOption(value: Utils.SourceArray, index: number, metadataContext?: any): Lexer.Token;
     function systemQueryOption(value: Utils.SourceArray, index: number, metadataContext?: any): Lexer.Token;
     function customQueryOption(value: Utils.SourceArray, index: number): Lexer.Token;
+    function batch(value: Utils.SourceArray, index: number): Lexer.Token;
     function id(value: Utils.SourceArray, index: number): Lexer.Token;
     function expand(value: Utils.SourceArray, index: number, metadataContext?: any): Lexer.Token;
     function expandItem(value: Utils.SourceArray, index: number, metadataContext?: any): Lexer.Token;

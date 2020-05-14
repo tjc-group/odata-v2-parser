@@ -34,6 +34,7 @@ export namespace Query {
 
     export function systemQueryOption(value: Utils.SourceArray, index: number, metadataContext?: any): Lexer.Token {
         return Query.expand(value, index, metadataContext) ||
+            Query.batch(value, index) ||
             Query.filter(value, index) ||
             Query.format(value, index) ||
             Query.id(value, index) ||
@@ -60,6 +61,18 @@ export namespace Query {
         if (index === eq) return;
 
         return Lexer.tokenize(value, start, index, { key: key.raw, value: Utils.stringify(value, eq, index) }, Lexer.TokenType.CustomQueryOption);
+    }
+
+    export function batch(value: Utils.SourceArray, index: number): Lexer.Token {
+        let start = index;
+        if (Utils.equals(value, index, "%24batch")) {
+            index += 8;
+        } else
+            if (Utils.equals(value, index, "$batch")) {
+                index += 6;
+            } else return;
+
+        return Lexer.tokenize(value, start, index, true, Lexer.TokenType.Batch);
     }
 
     export function id(value: Utils.SourceArray, index: number): Lexer.Token {
