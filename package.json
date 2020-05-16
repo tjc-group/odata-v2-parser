@@ -1,6 +1,6 @@
 {
   "name": "@tjc-group/odata-v2-parser",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "OData v4 Parser",
   "main": "lib/parser.js",
   "repository": {

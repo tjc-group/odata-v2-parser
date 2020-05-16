@@ -3,6 +3,7 @@ import Lexer from "./lexer";
 import PrimitiveLiteral from "./primitiveLiteral";
 import NameOrIdentifier from "./nameOrIdentifier";
 import Expressions from "./expressions";
+import { ResourceNotFoundError } from "./error";
 
 export namespace ResourcePath {
     export function resourcePath(value: Utils.SourceArray, index: number, metadataContext?: any): Lexer.Token {
@@ -61,6 +62,10 @@ export namespace ResourcePath {
                 metadataContext = resource.value.import.metadata;
                 delete resource.value.import.metadata;
                 break;
+        }
+
+        if (!metadataContext && !navigation) {
+            throw new ResourceNotFoundError(resource.raw);
         }
 
         if (navigation) index = navigation.next;
