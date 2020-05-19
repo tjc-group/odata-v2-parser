@@ -2,9 +2,8 @@
   {
     "-Name": "Binary with X",
     "-Rule": "binaryValue",
-    "-FailAt": "0",
     "Input": "X'1a2B3c4D'",
-    "result_error": {
+    "result": {
       "position": 0,
       "type": "Literal",
       "value": "Edm.Binary"

@@ -15,7 +15,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/test/parser.spec.js"
+                "${workspaceFolder}/test/primitiveLiteral.spec.js"
             ],
             "internalConsoleOptions": "openOnSessionStart",
             "skipFiles": [
