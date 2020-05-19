@@ -229,8 +229,13 @@ export namespace PrimitiveLiteral {
     }
     export function binaryValue(value: Utils.SourceArray, index: number): Lexer.Token {
         let start = index;
-        if (!Utils.equals(value, index, "binary")) return;
-        index += 6;
+        if (Utils.equals(value, index, "binary")) {
+            index += 6;
+        } else if (Utils.equals(value, index, "X")) {
+            index += 1;
+        } else {
+            return;
+        }
 
         let squote = Lexer.SQUOTE(value, index);
         if (!squote) return;
