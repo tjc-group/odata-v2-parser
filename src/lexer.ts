@@ -206,7 +206,7 @@ export namespace Lexer {
       next: next,
       value: tokenValue,
       type: tokenType,
-      raw: Utils.stringify(value, index, next)
+      raw: tokenValue === "Edm.Binary" ? Utils.toBinary(value, index, next) : Utils.stringify(value, index, next)
     });
     if (metadataContextContainer && metadataContextContainer.metadata) {
       token.metadata = metadataContextContainer.metadata;

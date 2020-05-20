@@ -1,6 +1,16 @@
 export namespace Utils {
     export type SourceArray = number[] | Uint16Array;
 
+    export function toBinary(value: SourceArray, index: number, next: number): Buffer {
+        let str = stringify(value, index, next);
+        const binaryMask = /^(binary|X)\'([0-9a-fA-F]+)\'/;
+        if (binaryMask.test(str)) {
+            return Buffer.from(str, "hex");
+        } else {
+            return Buffer.from(str, "base64");
+        }
+    }
+
     export function stringify(value: SourceArray, index: number, next: number): string {
         return Array.prototype.map.call(value.slice(index, next), function (ch) { return String.fromCharCode(ch); }).join("");
     }
