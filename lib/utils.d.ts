@@ -1,5 +1,7 @@
+/// <reference types="node" />
 export declare namespace Utils {
     type SourceArray = number[] | Uint16Array;
+    function toBinary(value: SourceArray, index: number, next: number): Buffer;
     function stringify(value: SourceArray, index: number, next: number): string;
     function is(value: number, compare: string): boolean;
     function equals(value: SourceArray, index: number, compare: string): number;

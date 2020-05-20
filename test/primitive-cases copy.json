@@ -22,6 +22,93 @@
     }
   },
   {
+    "-Name": "Binary - f",
+    "-Rule": "binaryValue",
+    "Input": "binary'Zg=='",
+    "result": {
+      "position": 0,
+      "raw":"Zg==",
+      "type": "Literal",
+      "value": "Edm.Binary"
+    }
+  },
+  {
+    "-Name": "Binary - f (pad character is optional)",
+    "-Rule": "binaryValue",
+    "Input": "binary'Zg'",
+    "result": {
+      "position": 0,
+      "raw": "Zg",
+      "type": "Literal",
+      "value": "Edm.Binary"
+    }
+  },
+  {
+    "-Name": "Binary - fo",
+    "-Rule": "binary",
+    "Input": "binary'Zm8='",
+    "result": {
+      "position": 0,
+      "raw": "Zm8=",
+      "type": "Literal",
+      "value": "Edm.Binary"
+    }
+  },
+  {
+    "-Name": "Binary - fo (pad character is optional)",
+    "-Rule": "binary",
+    "Input": "binary'Zm8='",
+    "result": {
+      "position": 0,
+      "type": "Literal",
+      "value": "Edm.Binary"
+    }
+  },
+  {
+    "-Name": "Binary - foo",
+    "-Rule": "binary",
+    "Input": "binary'Zm9v'",
+    "result": {
+      "position": 0,
+      "raw": "Zm9v",
+      "type": "Literal",
+      "value": "Edm.Binary"
+    }
+  },
+  {
+    "-Name": "Binary - foob",
+    "-Rule": "binary",
+    "Input": "binary'Zm9vYg=='",
+    "result": {
+      "position": 0,
+      "raw": "Zm9vYg==",
+      "type": "Literal",
+      "value": "Edm.Binary"
+    }
+  },
+  {
+    "-Name": "Binary - fooba",
+    "-Rule": "binary",
+    "Input": "binary'Zm9vYmE='",
+    "result": {
+      "raw": "Zm9vYmE=",
+      "position": 0,
+      "type": "Literal",
+      "value": "Edm.Binary"
+    }
+  },
+  {
+    "-Name": "Binary - foobar",
+    "-Rule": "binary",
+    "Input": "binary'Zm9vYmFy'",
+    "result": {
+      "position": 0,
+      "raw": "Zm9vYmFy",
+      "type": "Literal",
+      "value": "Edm.Binary"
+    }
+  },
+  {
     "-Name": "Date in URL or body",
     "-Rule": "dateValue",
     "Input": "2012-09-03",

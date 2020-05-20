@@ -3,9 +3,9 @@ export namespace Utils {
 
     export function toBinary(value: SourceArray, index: number, next: number): Buffer {
         let str = stringify(value, index, next);
-        const binaryMask = /^(binary|X)\'([0-9a-fA-F]+)\'/;
+        const binaryMask = /^(binary|X)\'([0-9a-fA-F]*)\'/;
         if (binaryMask.test(str)) {
-            return Buffer.from(str, "hex");
+            return Buffer.from(str.match(binaryMask)[2], "hex");
         } else {
             return Buffer.from(str, "base64");
         }

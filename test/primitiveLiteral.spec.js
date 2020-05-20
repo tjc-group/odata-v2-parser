@@ -18,6 +18,9 @@ describe('Primitive literals from json', () => {
 
         let literalFunctionName = getLiteralFunctionName(item["-Rule"] || 'primitiveLiteral');
         let literal = (PrimitiveLiteral[literalFunctionName] || PrimitiveLiteral.primitiveLiteral)(source, 0);
+        if (literalFunctionName == "binaryValue" || literalFunctionName == "binary") {
+          literal.raw = literal.raw.toString("base64");
+        }
         if (item['-FailAt'] !== undefined) {
           expect(literal).to.be.undefined;
           return;
