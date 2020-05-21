@@ -5,7 +5,7 @@
     "Input": "X'1a2B3c4D'",
     "result": {
       "position": 0,
-      "raw": "Gis8TQ==",
+      "raw": "X'1a2B3c4D'",
       "type": "Literal",
       "value": "Edm.Binary"
     }
@@ -18,7 +18,7 @@
       "position": 0,
       "type": "Literal",
       "value": "Edm.Binary",
-      "raw": ""
+      "raw": "binary''"
     }
   },
   {
