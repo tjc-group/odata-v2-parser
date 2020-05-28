@@ -329,6 +329,19 @@ export namespace Query {
                 path.push(typeName);
                 metadataContext = typeName.value.metadata;
                 delete typeName.value.metadata;
+            } else {
+                // nested Navigation property for V2
+                index++;
+                nav = NameOrIdentifier.navigationProperty(value, index, metadataContext);
+                while (nav) {
+                    if (value[nav.next] === 0x2f) {
+                        index = nav.next + 1;
+                        path.push(nav);
+                        metadataContext = nav.metadata;
+                    } else {
+                        break;
+                    }
+                }
             }
         }
 
