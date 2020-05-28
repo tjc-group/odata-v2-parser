@@ -16,18 +16,16 @@ describe("Parser", () => {
     var parser = new Parser();
     var ast = parser.query("$expand=Customer,Items/Product");
     expect(
-      ast.value.value.value.value.next.value.value.predicate.value.value.right
-        .value
-    ).to.equal("Edm.String");
+      ast.value.options[0].type
+    ).to.equal("Expand");
   });
 
   it("should parse expand", () => {
     var parser = new Parser();
     var ast = parser.query("$expand=Customer,Items($expand=Product)");
     expect(
-      ast.value.value.value.value.next.value.value.predicate.value.value.right
-        .value
-    ).to.equal("Edm.String");
+      ast.value.options[0].type
+    ).to.equal("Expand");
   });
 
 });

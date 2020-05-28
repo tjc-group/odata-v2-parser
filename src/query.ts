@@ -159,6 +159,27 @@ export namespace Query {
 
         let tokenValue: any = { path };
 
+        if (path.value.length > 1 && !path.value.some((token) => {
+            return token.type !== Lexer.TokenType.EntityNavigationProperty && token.type !== Lexer.TokenType.EntityCollectionNavigationProperty;
+        })) { // V2 Nested Navigation path
+            tokenValue.options = [];
+            let options = tokenValue.options;
+            while (path.value.length > 0) {
+                let nav = path.value.shift();
+                let nestedPath: any = Lexer.tokenize(value, nav.position, nav.next, [nav], Lexer.TokenType.ExpandPath);
+                let nestedItem = Lexer.tokenize(value, nav.position, nav.next, { path: nestedPath }, Lexer.TokenType.ExpandItem);
+                let option = Lexer.tokenize(value, nav.position, nav.next, { items: [nestedItem] }, Lexer.TokenType.Expand);
+                options.push(option);
+
+                if (path.value.length > 0) {
+                    nestedPath.options = [];
+                    options = nestedPath.options;
+                }
+            }
+
+            return Lexer.tokenize(value, start, index, tokenValue, Lexer.TokenType.ExpandItem);
+        }
+
         let ref = Expressions.refExpr(value, index);
         if (ref) {
             index = ref.next;
