@@ -334,10 +334,13 @@ export namespace Query {
                 index++;
                 nav = NameOrIdentifier.navigationProperty(value, index, metadataContext);
                 while (nav) {
+                    path.push(nav);
+                    metadataContext = nav.metadata;
+                    index = nav.next;
+                    delete nav.metadata;
                     if (value[nav.next] === 0x2f) {
-                        index = nav.next + 1;
-                        path.push(nav);
-                        metadataContext = nav.metadata;
+                        index++;
+                        nav = NameOrIdentifier.navigationProperty(value, index, metadataContext);
                     } else {
                         break;
                     }
