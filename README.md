@@ -1,3 +1,21 @@
+# OData v2 Parser
+
+This package is a kind of a downgrade from odata-v4-parser of JayStack. 
+The goal is to provide OData uri parser capable of parsing OData V2 requests and working together with @tjc-group/odata-v2-server.
+
+Currently implemented:
+-- support for V2 inline count (*$inlinecount=allpages*)
+-- support for nested navigation property path in *$expand* clause
+
+Should also parse OData V4 requests
+
+## Usage
+```javascript
+var parser = require('@tjc-group/odata-v2-parser');
+```
+
+## Below is the original JayStack README:
+
 # OData v4 Parser
 
 OData v4 parser based on OASIS Standard OData v4 ABNF grammar

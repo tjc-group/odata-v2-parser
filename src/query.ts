@@ -157,28 +157,33 @@ export namespace Query {
         if (!path) return;
         index = path.next;
 
-        let tokenValue: any = { path };
-
         if (path.value.length > 1 && !path.value.some((token) => {
             return token.type !== Lexer.TokenType.EntityNavigationProperty && token.type !== Lexer.TokenType.EntityCollectionNavigationProperty;
         })) { // V2 Nested Navigation path
-            tokenValue.options = [];
-            let options = tokenValue.options;
-            while (path.value.length > 0) {
-                let nav = path.value.shift();
-                let nestedPath: any = Lexer.tokenize(value, nav.position, nav.next, [nav], Lexer.TokenType.ExpandPath);
-                let nestedItem = Lexer.tokenize(value, nav.position, nav.next, { path: nestedPath }, Lexer.TokenType.ExpandItem);
-                let option = Lexer.tokenize(value, nav.position, nav.next, { items: [nestedItem] }, Lexer.TokenType.Expand);
-                options.push(option);
 
-                if (path.value.length > 0) {
-                    nestedPath.options = [];
-                    options = nestedPath.options;
+            function nestNavigation(paths): Lexer.Token {
+                let tokenValue: any = {};
+                if (paths.length) {
+                    let nav = paths.shift();
+                    tokenValue.path = Lexer.tokenize(value, nav.position, nav.next, [nav], Lexer.TokenType.ExpandPath);
+                    if (paths.length) {
+                        let nestedItem = nestNavigation(paths);
+                        if (nestedItem) {
+                            let option = Lexer.tokenize(value, nav.position, nav.next, { items: [nestedItem] }, Lexer.TokenType.Expand);
+                            tokenValue.options = [option];
+                        }
+                    }
+                    return Lexer.tokenize(value, nav.position, nav.next, tokenValue, Lexer.TokenType.ExpandItem);
                 }
+                return null;
             }
 
-            return Lexer.tokenize(value, start, index, tokenValue, Lexer.TokenType.ExpandItem);
+            let tokenValue = nestNavigation(path.value);
+
+            return Lexer.tokenize(value, start, index, tokenValue.value, Lexer.TokenType.ExpandItem);
         }
+
+        let tokenValue: any = { path };
 
         let ref = Expressions.refExpr(value, index);
         if (ref) {
@@ -719,10 +724,11 @@ export namespace Query {
 
         let token: Token;
         if (v2) {
-            if (!Utils.equals(value, index, "allpages")) {
+            let equals = Utils.equals(value, index, "allpages");
+            if (!equals) {
                 return;
             }
-            token = Lexer.tokenize(value, index, index + 8, "Edm.String", Lexer.TokenType.Literal);
+            token = Lexer.tokenize(value, index, index + equals, "Edm.String", Lexer.TokenType.Literal);
         } else {
             token = PrimitiveLiteral.booleanValue(value, index);
             if (!token) return;
