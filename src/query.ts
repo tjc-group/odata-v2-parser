@@ -729,6 +729,7 @@ export namespace Query {
                 return;
             }
             token = Lexer.tokenize(value, index, index + equals, "Edm.String", Lexer.TokenType.Literal);
+            token.raw = `'allpages'`;
         } else {
             token = PrimitiveLiteral.booleanValue(value, index);
             if (!token) return;

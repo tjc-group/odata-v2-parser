@@ -35,7 +35,7 @@ describe("Parser", () => {
     var parser = new Parser();
     var ast = parser.query("$inlinecount=allpages");
     expect(ast.value.options[0].type).to.equal("InlineCount");
-    expect(ast.value.options[0].value.raw).to.equal("allpages");
+    expect(ast.value.options[0].value.raw).to.equal("'allpages'");
   });
 
   it("should parse V4 inline count", () => {
