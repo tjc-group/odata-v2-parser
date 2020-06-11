@@ -35,7 +35,14 @@ describe("Parser", () => {
     var parser = new Parser();
     var ast = parser.query("$inlinecount=allpages");
     expect(ast.value.options[0].type).to.equal("InlineCount");
-    expect(ast.value.options[0].value.raw).to.equal("'allpages'");
+    expect(ast.value.options[0].value.raw).to.equal("true");
+  });
+
+  it("should parse V2 inline count", () => {
+    var parser = new Parser();
+    var ast = parser.query("$inlinecount=none");
+    expect(ast.value.options[0].type).to.equal("InlineCount");
+    expect(ast.value.options[0].value.raw).to.equal("false");
   });
 
   it("should parse V4 inline count", () => {

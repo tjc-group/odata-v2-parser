@@ -725,11 +725,17 @@ export namespace Query {
         let token: Token;
         if (v2) {
             let equals = Utils.equals(value, index, "allpages");
+            let raw = "true";
             if (!equals) {
-                return;
+                equals = Utils.equals(value, index, "none");
+                if (!equals) {
+                    return;
+                }
+                raw = "false";
             }
             token = Lexer.tokenize(value, index, index + equals, "Edm.String", Lexer.TokenType.Literal);
-            token.raw = `'allpages'`;
+            token.value = "Edm.Boolean";
+            token.raw   = raw;
         } else {
             token = PrimitiveLiteral.booleanValue(value, index);
             if (!token) return;
