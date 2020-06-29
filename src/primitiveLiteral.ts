@@ -158,9 +158,9 @@ export namespace PrimitiveLiteral {
                         index = squote;
                     }
                 } else {
-                    let nextIndex = Math.max(Lexer.RWS(value, index), Lexer.pcharNoSQUOTE(value, index));
-                    if (nextIndex === index) return;
-                    index = nextIndex;
+                    // let nextIndex = Math.max(Lexer.RWS(value, index), Lexer.pcharNoSQUOTE(value, index));
+                    // if (nextIndex === index) return;
+                    index++; //index = nextIndex;
                 }
             }
 
