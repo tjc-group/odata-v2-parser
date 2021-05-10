@@ -8,3 +8,4 @@ report
 *.log*
 lib
 lib/query.js
+.npmrc
