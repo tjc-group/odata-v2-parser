@@ -30,7 +30,7 @@
     "chai": "^4.2.0",
     "concurrently": "^5.2.0",
     "istanbul": "^0.4.5",
-    "mocha": "^7.2.0",
+    "mocha": "^10.2.0",
     "mochawesome": "^6.1.1",
     "remap-istanbul": "^0.13.0",
     "rimraf": "^3.0.2",
